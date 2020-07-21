@@ -31,6 +31,8 @@ export default class BubbleMgr extends cc.Component {
         cc.director.on(EVENT.TOUCHEND_SHOOT, (data) => {
             console.log('BubbleMgr -on -touchend');
             // console.log(data);
+            // FIX: 小球飞行时不应触发点击事件
+            if (this.isShooting) { return }
             // 转为弧度
             let r = cc.misc.degreesToRadians(data);
             // 分量 x - sin  y - cos
